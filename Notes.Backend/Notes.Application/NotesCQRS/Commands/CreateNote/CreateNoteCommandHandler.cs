@@ -21,7 +21,7 @@ public class CreateNoteCommandHandler : IRequestHandler<CreateNoteCommand, Guid>
             Title = request.Title,
             Details = request.Details,
             Id = Guid.NewGuid(),
-            CreationDate = DateTime.Now,
+            CreationDate = DateTime.UtcNow,
             EditDate = null
         };
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Notes.Application;
 
-public static class DependencyInjection
+public static class DependencyInjections
 {
     public static IServiceCollection AddApplication(
         this IServiceCollection services)

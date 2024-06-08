@@ -13,6 +13,10 @@ namespace Notes.Persistance;
 public class NotesDbContextPostgre : DbContext, INotesDbContext
 {
     public DbSet<Note> Notes { get; set; }
+    public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return await base.SaveChangesAsync(cancellationToken);
+    }
 
     public NotesDbContextPostgre(DbContextOptions options) : base(options) { }
 

@@ -15,7 +15,7 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistance(this IServiceCollection services,
         IConfiguration configuration)
     {
-        var connectionString = configuration["DbConnection"];
+        var connectionString = configuration.GetConnectionString("DbConnection");
         services.AddDbContext<NotesDbContextPostgre>(options =>
         {
             options.UseNpgsql(connectionString);

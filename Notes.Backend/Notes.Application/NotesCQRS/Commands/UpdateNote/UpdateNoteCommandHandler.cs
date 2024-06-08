@@ -27,7 +27,7 @@ public class UpdateNoteCommandHandler : IRequestHandler<UpdateNoteCommand>
 
         entity.Details = request.Details;
         entity.Title  = request.Title;
-        entity.EditDate = DateTime.Now;
+        entity.EditDate = DateTime.UtcNow;
 
         await _context.SaveChangesAsync(cancellationToken);
     }

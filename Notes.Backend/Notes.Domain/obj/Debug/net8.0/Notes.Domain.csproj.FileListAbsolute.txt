@@ -1,0 +1,12 @@
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\bin\Debug\net8.0\Notes.Domain.deps.json
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\bin\Debug\net8.0\Notes.Domain.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\bin\Debug\net8.0\Notes.Domain.pdb
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\Notes.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\Notes.Domain.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\Notes.Domain.AssemblyInfo.cs
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\Notes.Domain.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\Notes.Domain.sourcelink.json
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\Notes.Domain.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\refint\Notes.Domain.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\Notes.Domain.pdb
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.Domain\obj\Debug\net8.0\ref\Notes.Domain.dll
