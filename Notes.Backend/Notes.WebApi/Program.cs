@@ -3,6 +3,7 @@ using Notes.Application.Interfaces;
 using Notes.Persistance;
 using System.Reflection;
 using Notes.Application;
+using Notes.WebApi.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAutoMapper(cfg =>
@@ -39,13 +40,14 @@ using (var scope = app.Services.CreateScope())
     {
         throw new Exception(""+ _);
     }
-} // IS IT NORMAL THAT IT`s HERE? builder.Services?..
+} 
 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
 
+app.UseCastomExceptionHandler();
 app.UseRouting();
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
