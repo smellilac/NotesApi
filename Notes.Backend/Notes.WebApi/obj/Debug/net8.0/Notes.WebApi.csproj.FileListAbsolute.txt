@@ -49,3 +49,5 @@ C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\obj\Debug\net8.0\
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\obj\Debug\net8.0\Notes.WebApi.pdb
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\obj\Debug\net8.0\Notes.WebApi.genruntimeconfig.cache
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\obj\Debug\net8.0\ref\Notes.WebApi.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

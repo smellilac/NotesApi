@@ -8,10 +8,9 @@ namespace Notes.WebApi.Middleware;
 public class CustomExceptionHandlerMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly ILogger _logger;
 
-    public CustomExceptionHandlerMiddleware(RequestDelegate next, ILogger logger) => 
-        (_next, _logger) = (next, logger);
+    public CustomExceptionHandlerMiddleware(RequestDelegate next) => 
+        (_next) = (next);
     
     public async Task Invoke(HttpContext context)
     {
@@ -32,14 +31,14 @@ public class CustomExceptionHandlerMiddleware
         switch (ex)
         {
             case FluentValidation.ValidationException exception:
-                result = JsonSerializer.Serialize(exception);
+                result = JsonSerializer.Serialize($"FluentValidation exception! Exception Message: \"{ex.Message}\" ");
                 statusCode = HttpStatusCode.BadRequest;
                 break;
             case NotFoundException exception:
                 statusCode = HttpStatusCode.NotFound;
                 break;
             case TaskCanceledException taskException:
-                result = JsonSerializer.Serialize(taskException);
+                result = JsonSerializer.Serialize(ex.Message);
                 statusCode = HttpStatusCode.BadRequest;
                 break;
         }
