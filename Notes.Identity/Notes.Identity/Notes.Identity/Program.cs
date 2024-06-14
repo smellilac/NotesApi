@@ -23,11 +23,21 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(config =>
     .AddDefaultTokenProviders();
 
 builder.Services.AddIdentityServer()
+    .AddAspNetIdentity<AppUser>()
     .AddInMemoryApiResources(Configuration.ApiResources)
     .AddInMemoryIdentityResources(Configuration.IdentityResources)
     .AddInMemoryApiScopes(Configuration.ApiScopes)
     .AddInMemoryClients(Configuration.Clients)
     .AddDeveloperSigningCredential();
+
+builder.Services.ConfigureApplicationCookie(cfg =>
+{
+    cfg.Cookie.Name = "Notes.Identity.Cookie";
+    cfg.LoginPath = "/Auth/Login";
+    cfg.LogoutPath = "/Auth/Logout";
+});
+
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -46,6 +56,5 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.MapGet("/", () => "Hello World!");
-
+app.MapDefaultControllerRoute();    
 app.Run();

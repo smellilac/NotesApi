@@ -56,3 +56,6 @@ C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity
 C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity\obj\Debug\net8.0\Notes.Identity.pdb
 C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity\obj\Debug\net8.0\Notes.Identity.genruntimeconfig.cache
 C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity\obj\Debug\net8.0\ref\Notes.Identity.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity\obj\Debug\net8.0\Notes.Identity.RazorAssemblyInfo.cache
+C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity\obj\Debug\net8.0\Notes.Identity.RazorAssemblyInfo.cs
+C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity\bin\Debug\net8.0\IdentityServer4.AspNetIdentity.dll

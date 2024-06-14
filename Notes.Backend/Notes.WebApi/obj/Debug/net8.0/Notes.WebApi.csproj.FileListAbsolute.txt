@@ -51,3 +51,11 @@ C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\obj\Debug\net8.0\
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\obj\Debug\net8.0\ref\Notes.WebApi.dll
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\FluentValidation.dll
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

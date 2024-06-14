@@ -4,6 +4,7 @@ using Notes.Persistance;
 using System.Reflection;
 using Notes.Application;
 using Notes.WebApi.Middleware;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAutoMapper(cfg =>
@@ -13,7 +14,19 @@ builder.Services.AddAutoMapper(cfg =>
 });
 builder.Services.AddApplication();
 builder.Services.AddPersistance(builder.Configuration);
-
+builder.Services.AddAuthentication(config =>
+{
+    config.DefaultAuthenticateScheme =
+        JwtBearerDefaults.AuthenticationScheme;
+    config.DefaultChallengeScheme = 
+        JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "http://localhost:44325/";
+        options.Audience = "NotesWebAPI";
+        options.RequireHttpsMetadata = false;
+    });
 builder.Services.AddControllers();
 
 builder.Services.AddCors(opt =>
@@ -51,6 +64,7 @@ app.UseCastomExceptionHandler();
 app.UseRouting();
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();
