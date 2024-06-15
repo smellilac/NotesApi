@@ -55,18 +55,23 @@ public class DeleteNoteCommandHandlerTests : TestCommandBase
     public async Task DeleteNoteCommandHandler_FailOnWrongUserId()
     {
         // Arrange
+
         var handlerForDeleting = new DeleteNoteCommandHandler(Context);
         var handlerForCreating = new CreateNoteCommandHandler(Context);
+
         // Act
 
         var noteId = await handlerForCreating.Handle(
             new CreateNoteCommand
             {
-                UserId = NotesContextFactory.UserBId,
-                Title = "Testing Delete_WrongUserId"
+                UserId = NotesContextFactory.UserAId,
+                Title = "Testing Delete_WrongUserId",
+                Details = "f"
             },
             CancellationToken.None);
+
         // Assert
+
         await Assert.ThrowsAsync<NotFoundException>(async () =>
             await handlerForDeleting.Handle(
                 new DeleteNoteCommand

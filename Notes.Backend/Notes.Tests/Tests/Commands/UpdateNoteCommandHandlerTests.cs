@@ -59,22 +59,13 @@ public class UpdateNoteCommandHandlerTests : TestCommandBase
     {
         // Arrange 
         var handlerForUpdate = new UpdateNoteCommandHandler(Context);
-        var handlerForCreate = new CreateNoteCommandHandler(Context);
         // Act
-        var noteId = await handlerForCreate.Handle(
-            new CreateNoteCommand
-            {
-                UserId = NotesContextFactory.UserBId,
-                Title = ""
-            },
-            CancellationToken.None);
-
         // Assert
         await Assert.ThrowsAsync<NotFoundException>(async () => 
             await handlerForUpdate.Handle(
                 new UpdateNoteCommand
                 {
-                    Id = noteId,
+                    Id = NotesContextFactory.NoteIdForUpdate,
                     UserId = Guid.NewGuid(),
                 }, 
                 CancellationToken.None));
