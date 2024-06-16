@@ -59,3 +59,10 @@ C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\obj\Debug\net8.0\Notes.WebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\bin\Debug\net8.0\Notes.WebApi.xml
+C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi\obj\Debug\net8.0\Notes.WebApi.xml
