@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Notes.Backend",
-    "\\Notes.Backend\\Notes.Persistance"
+    "\\Notes.Backend\\Notes.WebApi"
   ],
-  "SelectedNode": "\\Notes.Backend\\Notes.WebApi",
+  "SelectedNode": "\\Notes.Backend\\Notes.WebApi\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

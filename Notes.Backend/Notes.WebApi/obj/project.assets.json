@@ -97,6 +97,38 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Versioning": "5.1.0"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore/8.0.6": {
         "type": "package",
         "dependencies": {
@@ -711,6 +743,52 @@
         "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
         "microsoft.aspnetcore.authentication.jwtbearer.8.0.6.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
+      "sha512": "UX8w9BlCiZpr6Ox4YAve1w0CkI1CAovukGNzKd7v0+5pZc8lzuG5tRovucr1RWIKHs0E/Yx8563CN7KzaB3bpw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.versioning/5.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "icon.png",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.Versioning.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.Versioning.pdb",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.Versioning.xml",
+        "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.dll",
+        "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.pdb",
+        "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.xml",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.Versioning.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.Versioning.pdb",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.Versioning.xml",
+        "microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.versioning.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0": {
+      "sha512": "p45pSXCJPbx+p9gFNNQPUC547KpqP5cRJke6aygq/M7UzCrJNmJNqD+65pIpY4muYbINqlgrC47h1oc0WbuP1g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.versioning.apiexplorer/5.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "icon.png",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.pdb",
+        "lib/net5.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.xml",
+        "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll",
+        "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.pdb",
+        "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.xml",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.pdb",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.xml",
+        "microsoft.aspnetcore.mvc.versioning.apiexplorer.5.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.versioning.apiexplorer.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore/8.0.6": {
@@ -1677,6 +1755,8 @@
     "net8.0": [
       "AutoMapper >= 13.0.1",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.6",
+      "Microsoft.AspNetCore.Mvc.Versioning >= 5.1.0",
+      "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer >= 5.1.0",
       "Notes.Application >= 1.0.0",
       "Notes.Persistance >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
@@ -1740,6 +1820,14 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[8.0.6, )"
+          },
+          "Microsoft.AspNetCore.Mvc.Versioning": {
+            "target": "Package",
+            "version": "[5.1.0, )"
+          },
+          "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+            "target": "Package",
+            "version": "[5.1.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
