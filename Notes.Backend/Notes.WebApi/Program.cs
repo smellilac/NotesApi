@@ -9,6 +9,9 @@ using Microsoft.Extensions.Options;
 using Notes.WebApi.SwaggerConfiguration;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Notes.WebApi.Services;
+using Serilog;
+using Serilog.Events;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAutoMapper(cfg =>
@@ -48,6 +51,15 @@ builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>,
         ConfigureSwaggerOptions>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApiVersioning();
+builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
+builder.Services.AddHttpContextAccessor();
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .WriteTo.File("Logs/NotesWebAppLog-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
@@ -59,9 +71,9 @@ using (var scope = app.Services.CreateScope())
         var context = serviceProvider.GetRequiredService<NotesDbContextPostgre>();
         DbInitializer.Initialize(context);
     }
-    catch (Exception _)
+    catch (Exception error)
     {
-        throw new Exception(""+ _);
+        Log.Fatal(error, "Error occured while initializating database");
     }
 } 
 

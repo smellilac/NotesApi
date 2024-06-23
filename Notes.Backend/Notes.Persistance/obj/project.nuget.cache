@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Khvj5QczTPh9xwYAT2YLqXTaLP5Tr7e2WGrN1Hwd+UJeQeQC7s0b2LzYyNT0rrYVMYJy3ZlFAD8IndKlWHfN6w==",
+  "dgSpecHash": "UUzZaaLj8d9P03Xl/DnZGzM+0w8eNgPjcre8xmPF5pLwIQldZ/EKn6KflWtKzhl3XXC557sI+ro5UqDMagsvAg==",
   "success": true,
   "projectFilePath": "C:\\Users\\User\\source\\repos\\NotesAPI\\Notes.Backend\\Notes.Persistance\\Notes.Persistance.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,9 @@
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\npgsql\\8.0.3\\npgsql.8.0.3.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.4\\npgsql.entityframeworkcore.postgresql.8.0.4.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.4\\npgsql.entityframeworkcore.postgresql.8.0.4.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\serilog\\4.0.0\\serilog.4.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\serilog.sinks.file\\6.0.0\\serilog.sinks.file.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

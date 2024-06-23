@@ -1,0 +1,36 @@
+2024-06-23 15:21:34.604 +03:00 [INF] Executed DbCommand (107ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-06-23 15:21:35.034 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-23 15:21:35.549 +03:00 [INF] Now listening on: https://localhost:7061
+2024-06-23 15:21:35.550 +03:00 [INF] Now listening on: http://localhost:5208
+2024-06-23 15:21:35.552 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-23 15:21:35.552 +03:00 [INF] Hosting environment: Development
+2024-06-23 15:21:35.552 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-06-23 15:21:41.709 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/index.html - null null
+2024-06-23 15:21:42.049 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/index.html - 200 null text/html;charset=utf-8 351.4665ms
+2024-06-23 15:21:42.059 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/_framework/aspnetcore-browser-refresh.js - null null
+2024-06-23 15:21:42.066 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 7.1321ms
+2024-06-23 15:21:42.074 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/_vs/browserLink - null null
+2024-06-23 15:21:42.148 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/_vs/browserLink - 200 null text/javascript; charset=UTF-8 74.532ms
+2024-06-23 15:21:42.263 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - null null
+2024-06-23 15:21:42.286 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/favicon-32x32.png - null null
+2024-06-23 15:21:42.304 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-06-23 15:21:42.304 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/favicon-32x32.png - 200 628 image/png 18.0539ms
+2024-06-23 15:21:42.434 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 170.898ms
