@@ -1,0 +1,103 @@
+2024-07-16 09:18:27.719 +03:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 09:18:27.734 +03:00 [INF] Starting Duende IdentityServer version 7.0.5+11906052da057e72f04ee755c1f4953b6cb93ac3 (.NET 8.0.0-rc.2.23479.6)
+2024-07-16 09:18:27.743 +03:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2024-07-16 09:18:27.743 +03:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2024-07-16 09:18:27.746 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2024-07-16 09:18:27.748 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2024-07-16 09:18:27.870 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 09:18:27.974 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 09:18:27.974 +03:00 [INF] Hosting environment: Development
+2024-07-16 09:18:27.975 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity
+2024-07-16 09:18:28.025 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/ - null null
+2024-07-16 09:18:28.442 +03:00 [INF] Executed DbCommand (18ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."AccessFailedCount", u."ConcurrencyStamp", u."Email", u."EmailConfirmed", u."FirstName", u."LastName", u."LockoutEnabled", u."LockoutEnd", u."NormalizedEmail", u."NormalizedUserName", u."PasswordHash", u."PhoneNumber", u."PhoneNumberConfirmed", u."SecurityStamp", u."TwoFactorEnabled", u."UserName"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2024-07-16 09:18:28.574 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."ClaimType", u."ClaimValue", u."UserId"
+FROM "UserClaim" AS u
+WHERE u."UserId" = @__user_Id_0
+2024-07-16 09:18:28.601 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Name"
+FROM "UserRoles" AS u
+INNER JOIN "Roles" AS r ON u."RoleId" = r."Id"
+WHERE u."UserId" = @__userId_0
+2024-07-16 09:18:28.656 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/ - 404 null null 639.6417ms
+2024-07-16 09:18:28.660 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44325/, Response status code: 404
+2024-07-16 09:18:40.094 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - null null
+2024-07-16 09:18:40.110 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:40.141 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2024-07-16 09:18:40.358 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 262.6711ms
+2024-07-16 09:18:40.380 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/connect/authorize?client_id=notes-web-app&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsignin-oidc&response_type=code&scope=openid+profile+NotesWebAPI&state=d5cb4264fa184527adfb71b0d1cb14f6&code_challenge=KI-U86OIlzCrCv-5D6pVxDetVjxFBHRKuJbkKnUdg7s&code_challenge_method=S256 - null null
+2024-07-16 09:18:40.460 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeEndpoint for /connect/authorize
+2024-07-16 09:18:40.618 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."AccessFailedCount", u."ConcurrencyStamp", u."Email", u."EmailConfirmed", u."FirstName", u."LastName", u."LockoutEnabled", u."LockoutEnd", u."NormalizedEmail", u."NormalizedUserName", u."PasswordHash", u."PhoneNumber", u."PhoneNumberConfirmed", u."SecurityStamp", u."TwoFactorEnabled", u."UserName"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2024-07-16 09:18:40.704 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/connect/authorize?client_id=notes-web-app&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsignin-oidc&response_type=code&scope=openid+profile+NotesWebAPI&state=d5cb4264fa184527adfb71b0d1cb14f6&code_challenge=KI-U86OIlzCrCv-5D6pVxDetVjxFBHRKuJbkKnUdg7s&code_challenge_method=S256 - 302 null null 324.3423ms
+2024-07-16 09:18:41.191 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - null null
+2024-07-16 09:18:41.192 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:41.196 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2024-07-16 09:18:41.200 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 8.9744ms
+2024-07-16 09:18:41.206 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - null null
+2024-07-16 09:18:41.207 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:41.225 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2024-07-16 09:18:41.227 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 21.0929ms
+2024-07-16 09:18:41.274 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44325/connect/token - application/x-www-form-urlencoded 293
+2024-07-16 09:18:41.274 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44325/connect/token - application/x-www-form-urlencoded 293
+2024-07-16 09:18:41.275 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:41.275 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:41.281 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.TokenEndpoint for /connect/token
+2024-07-16 09:18:41.281 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.TokenEndpoint for /connect/token
+2024-07-16 09:18:41.345 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."AccessFailedCount", u."ConcurrencyStamp", u."Email", u."EmailConfirmed", u."FirstName", u."LastName", u."LockoutEnabled", u."LockoutEnd", u."NormalizedEmail", u."NormalizedUserName", u."PasswordHash", u."PhoneNumber", u."PhoneNumberConfirmed", u."SecurityStamp", u."TwoFactorEnabled", u."UserName"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2024-07-16 09:18:41.404 +03:00 [INF] Token request validation success, {"ClientId":"notes-web-app","ClientName":"Notes Web","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"****A3-1","RefreshToken":"********","UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"authorization_code","redirect_uri":"http://localhost:3000/signin-oidc","code":"***REDACTED***","code_verifier":"2b4df5c0221c44698b40d958a5cbc9ce2eb4918f9aad440db7d4fbf9041246d8083e2400568141a981397615e5bdc0d8","client_id":"notes-web-app"},"$type":"TokenRequestValidationLog"}
+2024-07-16 09:18:41.437 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."ClaimType", u."ClaimValue", u."UserId"
+FROM "UserClaim" AS u
+WHERE u."UserId" = @__user_Id_0
+2024-07-16 09:18:41.442 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Name"
+FROM "UserRoles" AS u
+INNER JOIN "Roles" AS r ON u."RoleId" = r."Id"
+WHERE u."UserId" = @__userId_0
+2024-07-16 09:18:41.443 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."AccessFailedCount", u."ConcurrencyStamp", u."Email", u."EmailConfirmed", u."FirstName", u."LastName", u."LockoutEnabled", u."LockoutEnd", u."NormalizedEmail", u."NormalizedUserName", u."PasswordHash", u."PhoneNumber", u."PhoneNumberConfirmed", u."SecurityStamp", u."TwoFactorEnabled", u."UserName"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2024-07-16 09:18:41.446 +03:00 [INF] Token request validation success, {"ClientId":"notes-web-app","ClientName":"Notes Web","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"****A3-1","RefreshToken":"********","UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"authorization_code","redirect_uri":"http://localhost:3000/signin-oidc","code":"***REDACTED***","code_verifier":"2b4df5c0221c44698b40d958a5cbc9ce2eb4918f9aad440db7d4fbf9041246d8083e2400568141a981397615e5bdc0d8","client_id":"notes-web-app"},"$type":"TokenRequestValidationLog"}
+2024-07-16 09:18:41.450 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."ClaimType", u."ClaimValue", u."UserId"
+FROM "UserClaim" AS u
+WHERE u."UserId" = @__user_Id_0
+2024-07-16 09:18:41.464 +03:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT r."Name"
+FROM "UserRoles" AS u
+INNER JOIN "Roles" AS r ON u."RoleId" = r."Id"
+WHERE u."UserId" = @__userId_0
+2024-07-16 09:18:41.553 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44325/connect/token - 200 null application/json; charset=UTF-8 279.3542ms
+2024-07-16 09:18:41.553 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44325/connect/token - 200 null application/json; charset=UTF-8 279.3542ms

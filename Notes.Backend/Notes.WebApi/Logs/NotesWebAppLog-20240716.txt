@@ -1,0 +1,1201 @@
+2024-07-16 09:17:12.763 +03:00 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 09:17:12.995 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 09:17:13.123 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 09:17:13.123 +03:00 [INF] Hosting environment: Development
+2024-07-16 09:17:13.123 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 09:17:13.146 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 09:17:13.358 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 219.5564ms
+2024-07-16 09:17:13.382 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 09:17:13.390 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 09:17:13.391 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 3.7658ms
+2024-07-16 09:17:13.425 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 35.3224ms
+2024-07-16 09:17:13.745 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 09:17:13.852 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 107.1282ms
+2024-07-16 09:17:25.600 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:25.600 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:25.639 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:25.639 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:25.642 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 42.3571ms
+2024-07-16 09:17:25.643 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 43.4754ms
+2024-07-16 09:17:25.646 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:25.662 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:25.760 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:17:25.765 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:17:25.767 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 121.1022ms
+2024-07-16 09:17:25.769 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:25.770 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:25.774 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:17:25.775 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:17:25.775 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 6.3557ms
+2024-07-16 09:17:35.369 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:35.369 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:35.370 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:35.370 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:35.370 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.3698ms
+2024-07-16 09:17:35.370 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.3698ms
+2024-07-16 09:17:35.374 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:35.374 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:35.376 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:17:35.377 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:17:35.377 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 3.4747ms
+2024-07-16 09:17:35.379 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:35.379 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:35.379 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:17:35.379 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:17:35.380 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.0203ms
+2024-07-16 09:17:39.054 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:39.054 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:39.055 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.5318ms
+2024-07-16 09:17:39.058 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - application/json 15
+2024-07-16 09:17:39.058 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:39.059 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:17:39.059 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:17:39.060 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - 401 null null 2.0991ms
+2024-07-16 09:17:39.556 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:17:39.556 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:39.556 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:17:39.556 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:17:39.557 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.639ms
+2024-07-16 09:18:22.344 +03:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 09:18:22.504 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 09:18:22.603 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 09:18:22.607 +03:00 [INF] Hosting environment: Development
+2024-07-16 09:18:22.607 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 09:18:22.628 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 09:18:22.793 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 171.6151ms
+2024-07-16 09:18:22.842 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 09:18:22.848 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 4.6613ms
+2024-07-16 09:18:22.858 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 09:18:22.896 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 38.529ms
+2024-07-16 09:18:23.131 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 09:18:23.220 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 88.3374ms
+2024-07-16 09:18:31.305 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:18:31.305 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:18:31.332 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:31.332 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:31.335 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 29.6029ms
+2024-07-16 09:18:31.336 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 30.2648ms
+2024-07-16 09:18:31.341 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:18:31.352 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:31.431 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:18:31.435 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:18:31.437 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 96.424ms
+2024-07-16 09:18:31.445 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:18:31.445 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:31.450 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:18:31.450 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:18:31.451 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 6.2597ms
+2024-07-16 09:18:41.594 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:18:41.594 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:18:41.594 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:41.594 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:41.595 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0257ms
+2024-07-16 09:18:41.595 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0227ms
+2024-07-16 09:18:41.598 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:18:41.598 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:41.699 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidIssuerException: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuerAsync(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuer(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.InternalValidators.ValidateAfterSignatureFailed(SecurityToken securityToken, Nullable`1 notBefore, Nullable`1 expires, IEnumerable`1 audiences, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-07-16 09:18:41.702 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+2024-07-16 09:18:41.704 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:18:41.705 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:18:41.706 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 108.037ms
+2024-07-16 09:18:41.708 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:18:41.708 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:18:41.721 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidIssuerException: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuerAsync(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuer(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.InternalValidators.ValidateAfterSignatureFailed(SecurityToken securityToken, Nullable`1 notBefore, Nullable`1 expires, IEnumerable`1 audiences, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-07-16 09:18:41.722 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+2024-07-16 09:18:41.722 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:18:41.722 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:18:41.723 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 15.2948ms
+2024-07-16 09:19:24.609 +03:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 09:19:24.770 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 09:19:24.862 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 09:19:24.868 +03:00 [INF] Hosting environment: Development
+2024-07-16 09:19:24.868 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 09:19:24.891 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 09:19:25.068 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 183.3439ms
+2024-07-16 09:19:25.092 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 09:19:25.096 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 3.9754ms
+2024-07-16 09:19:25.104 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 09:19:25.138 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 33.4321ms
+2024-07-16 09:19:25.357 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 09:19:25.438 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 81.0646ms
+2024-07-16 09:19:35.696 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:19:35.696 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:19:35.730 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:19:35.730 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:19:35.733 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 36.6799ms
+2024-07-16 09:19:35.734 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 37.9962ms
+2024-07-16 09:19:35.737 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:19:35.750 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:19:35.840 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:19:35.846 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:19:35.847 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 110.2847ms
+2024-07-16 09:19:35.852 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:19:35.853 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:19:35.857 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:19:35.858 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:19:35.858 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 6.6605ms
+2024-07-16 09:19:53.930 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:19:53.930 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:19:53.930 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:19:53.930 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:19:53.930 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 4.2514ms
+2024-07-16 09:19:53.930 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 0.74ms
+2024-07-16 09:19:53.935 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:19:53.935 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:19:54.076 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidIssuerException: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuerAsync(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuer(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.InternalValidators.ValidateAfterSignatureFailed(SecurityToken securityToken, Nullable`1 notBefore, Nullable`1 expires, IEnumerable`1 audiences, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-07-16 09:19:54.081 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+2024-07-16 09:19:54.083 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:19:54.085 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:19:54.085 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 150.667ms
+2024-07-16 09:19:54.087 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:19:54.087 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:19:54.107 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidIssuerException: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuerAsync(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuer(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.InternalValidators.ValidateAfterSignatureFailed(SecurityToken securityToken, Nullable`1 notBefore, Nullable`1 expires, IEnumerable`1 audiences, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-07-16 09:19:54.107 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+2024-07-16 09:19:54.107 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:19:54.108 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:19:54.108 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 21.6733ms
+2024-07-16 09:24:14.844 +03:00 [INF] Request starting HTTP/1.1 POST https://localhost:44351/api/Note?api-version=1.0&Note%201 - null 0
+2024-07-16 09:24:14.872 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidIssuerException: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuerAsync(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuer(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.InternalValidators.ValidateAfterSignatureFailed(SecurityToken securityToken, Nullable`1 notBefore, Nullable`1 expires, IEnumerable`1 audiences, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-07-16 09:24:14.872 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+2024-07-16 09:24:14.872 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:24:14.873 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:24:14.874 +03:00 [INF] Request finished HTTP/1.1 POST https://localhost:44351/api/Note?api-version=1.0&Note%201 - 401 null null 29.1739ms
+2024-07-16 09:25:25.970 +03:00 [INF] Request starting HTTP/1.1 POST https://localhost:44351/api/Note?api-version=1.0&Note%201 - null 0
+2024-07-16 09:25:25.997 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidIssuerException: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuerAsync(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuer(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.Tokens.InternalValidators.ValidateAfterSignatureFailed(SecurityToken securityToken, Nullable`1 notBefore, Nullable`1 expires, IEnumerable`1 audiences, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-07-16 09:25:25.997 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10204: Unable to validate issuer. validationParameters.ValidIssuer is null or whitespace AND validationParameters.ValidIssuers is null or empty.
+2024-07-16 09:25:25.998 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:25:25.998 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:25:25.998 +03:00 [INF] Request finished HTTP/1.1 POST https://localhost:44351/api/Note?api-version=1.0&Note%201 - 401 null null 28.2777ms
+2024-07-16 09:42:56.926 +03:00 [INF] Executed DbCommand (101ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 09:42:57.238 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 09:42:57.473 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 09:42:57.473 +03:00 [INF] Hosting environment: Development
+2024-07-16 09:42:57.473 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 09:42:57.510 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:42:57.510 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 09:42:57.510 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:42:57.590 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:42:57.590 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:42:57.619 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:42:57.620 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 122.4533ms
+2024-07-16 09:42:57.632 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 135.4038ms
+2024-07-16 09:42:57.641 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:42:57.745 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:42:57.750 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:42:57.759 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:42:57.760 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:42:57.762 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 142.8446ms
+2024-07-16 09:42:57.765 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:42:57.765 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:42:57.766 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 7.3745ms
+2024-07-16 09:42:57.865 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 367.9389ms
+2024-07-16 09:42:57.895 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 09:42:57.901 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 4.883ms
+2024-07-16 09:42:57.910 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 09:42:57.977 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.1786ms
+2024-07-16 09:42:58.204 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 09:42:58.390 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 186.4591ms
+2024-07-16 09:43:21.925 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:43:21.926 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:43:21.930 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:43:21.930 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:43:21.930 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 7.2727ms
+2024-07-16 09:43:21.932 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 5.9208ms
+2024-07-16 09:43:21.934 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:43:21.935 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:43:22.179 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10500: Signature validation failed. No security keys were provided to validate the signature.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-07-16 09:43:22.185 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10500: Signature validation failed. No security keys were provided to validate the signature.
+2024-07-16 09:43:22.188 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:43:22.189 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:43:22.190 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 255.8506ms
+2024-07-16 09:43:22.193 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:43:22.194 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:43:22.213 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10500: Signature validation failed. No security keys were provided to validate the signature.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2024-07-16 09:43:22.214 +03:00 [INF] Bearer was not authenticated. Failure message: IDX10500: Signature validation failed. No security keys were provided to validate the signature.
+2024-07-16 09:43:22.214 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:43:22.214 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:43:22.215 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 21.8371ms
+2024-07-16 09:47:07.671 +03:00 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 09:47:07.911 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 09:47:08.072 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 09:47:08.075 +03:00 [INF] Hosting environment: Development
+2024-07-16 09:47:08.076 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 09:47:08.109 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 09:47:08.404 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 306.6068ms
+2024-07-16 09:47:08.438 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 09:47:08.445 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 5.2714ms
+2024-07-16 09:47:08.451 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 09:47:08.501 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.7946ms
+2024-07-16 09:47:08.747 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 09:47:08.920 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 173.1947ms
+2024-07-16 09:47:43.200 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 09:47:43.395 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 09:47:43.526 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 09:47:43.527 +03:00 [INF] Hosting environment: Development
+2024-07-16 09:47:43.527 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 09:47:43.555 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 09:47:43.745 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 198.0505ms
+2024-07-16 09:47:43.771 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 09:47:43.778 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 2.863ms
+2024-07-16 09:47:43.779 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 09:47:43.813 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 33.7231ms
+2024-07-16 09:47:44.055 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 09:47:44.222 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 166.8089ms
+2024-07-16 09:47:53.706 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:47:53.710 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:47:53.769 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:47:53.770 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:47:53.774 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 63.5868ms
+2024-07-16 09:47:53.774 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 68.1722ms
+2024-07-16 09:47:53.827 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:47:53.848 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:47:53.990 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:47:53.996 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:47:53.998 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 171.4431ms
+2024-07-16 09:47:54.001 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:47:54.002 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:47:54.008 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 09:47:54.009 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 09:47:54.010 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 9.1373ms
+2024-07-16 09:48:10.372 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:48:10.372 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:48:10.373 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:48:10.373 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:48:10.373 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0334ms
+2024-07-16 09:48:10.373 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0477ms
+2024-07-16 09:48:10.378 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:48:10.379 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:48:10.683 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 09:48:10.716 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 09:48:11.139 +03:00 [INF] Notes Request: GetNoteListQuery, "5a277386-3935-4b51-818e-7106bf6190a9", {"UserId":"5a277386-3935-4b51-818e-7106bf6190a9","$type":"GetNoteListQuery"}
+2024-07-16 09:48:11.639 +03:00 [INF] Executed DbCommand (31ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 09:48:11.666 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 09:48:11.713 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:48:11.713 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:48:11.716 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 09:48:11.716 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 09:48:11.717 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 996.731ms
+2024-07-16 09:48:11.718 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 09:48:11.718 +03:00 [INF] Notes Request: GetNoteListQuery, "5a277386-3935-4b51-818e-7106bf6190a9", {"UserId":"5a277386-3935-4b51-818e-7106bf6190a9","$type":"GetNoteListQuery"}
+2024-07-16 09:48:11.724 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 1345.1244ms
+2024-07-16 09:48:11.805 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 09:48:11.806 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 09:48:11.807 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 90.2242ms
+2024-07-16 09:48:11.807 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 09:48:11.807 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 94.2049ms
+2024-07-16 09:48:17.820 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:48:17.821 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:48:17.822 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.7811ms
+2024-07-16 09:48:17.825 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - application/json 18
+2024-07-16 09:48:17.825 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:48:17.827 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 09:48:17.844 +03:00 [INF] Route matched with {action = "Create", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Guid]] Create(Notes.WebApi.Models.CreateNoteDto) on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 09:48:17.904 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-07-16 09:48:17.956 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi) in 112.5461ms
+2024-07-16 09:48:17.957 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 09:48:17.957 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - 400 null application/json; charset=utf-8 131.9322ms
+2024-07-16 09:48:21.639 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 09:48:21.639 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:48:21.640 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 09:48:21.640 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 09:48:21.643 +03:00 [INF] Notes Request: GetNoteListQuery, "5a277386-3935-4b51-818e-7106bf6190a9", {"UserId":"5a277386-3935-4b51-818e-7106bf6190a9","$type":"GetNoteListQuery"}
+2024-07-16 09:48:21.652 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 09:48:21.654 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 09:48:21.656 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 16.1077ms
+2024-07-16 09:48:21.657 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 09:48:21.657 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 18.4452ms
+2024-07-16 11:09:54.417 +03:00 [INF] Executed DbCommand (94ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 11:09:54.749 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 11:09:54.934 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 11:09:54.935 +03:00 [INF] Hosting environment: Development
+2024-07-16 11:09:54.935 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 11:09:54.974 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 11:09:55.311 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 350.6591ms
+2024-07-16 11:09:55.315 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 11:09:55.320 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 4.4456ms
+2024-07-16 11:09:55.334 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 11:09:55.386 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.5294ms
+2024-07-16 11:09:55.517 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 11:09:55.691 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 173.6685ms
+2024-07-16 11:10:09.793 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:09.793 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:09.837 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:09.837 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:09.840 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 47.615ms
+2024-07-16 11:10:09.842 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 48.4797ms
+2024-07-16 11:10:09.862 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:09.876 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:09.996 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 11:10:10.001 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 11:10:10.004 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 141.9039ms
+2024-07-16 11:10:10.016 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:10.017 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:10.021 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 11:10:10.022 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 11:10:10.023 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 7.2727ms
+2024-07-16 11:10:24.269 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:24.269 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:24.270 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:24.270 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:24.270 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.208ms
+2024-07-16 11:10:24.270 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.2079ms
+2024-07-16 11:10:24.274 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:24.274 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:24.575 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:24.608 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:10:24.835 +03:00 [INF] Notes Request: GetNoteListQuery, "bb8b0632-1269-4594-afd2-489b2baf6246", {"UserId":"bb8b0632-1269-4594-afd2-489b2baf6246","$type":"GetNoteListQuery"}
+2024-07-16 11:10:25.327 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:10:25.358 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:10:25.403 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:25.404 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:25.407 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:25.407 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 794.8147ms
+2024-07-16 11:10:25.407 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:10:25.408 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:25.409 +03:00 [INF] Notes Request: GetNoteListQuery, "bb8b0632-1269-4594-afd2-489b2baf6246", {"UserId":"bb8b0632-1269-4594-afd2-489b2baf6246","$type":"GetNoteListQuery"}
+2024-07-16 11:10:25.420 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 1145.8723ms
+2024-07-16 11:10:25.511 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:10:25.515 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:10:25.516 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 108.9873ms
+2024-07-16 11:10:25.517 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:25.517 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 113.8891ms
+2024-07-16 11:10:32.939 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:32.939 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:32.940 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:32.940 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:32.941 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 5.448ms
+2024-07-16 11:10:32.941 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.5655ms
+2024-07-16 11:10:32.945 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:32.946 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:32.948 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:32.948 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:10:32.952 +03:00 [INF] Notes Request: GetNoteListQuery, "bb8b0632-1269-4594-afd2-489b2baf6246", {"UserId":"bb8b0632-1269-4594-afd2-489b2baf6246","$type":"GetNoteListQuery"}
+2024-07-16 11:10:32.959 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:10:32.960 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:10:32.961 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 12.0662ms
+2024-07-16 11:10:32.961 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:32.961 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 15.9088ms
+2024-07-16 11:10:32.962 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:32.962 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:32.963 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:32.963 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:10:32.964 +03:00 [INF] Notes Request: GetNoteListQuery, "bb8b0632-1269-4594-afd2-489b2baf6246", {"UserId":"bb8b0632-1269-4594-afd2-489b2baf6246","$type":"GetNoteListQuery"}
+2024-07-16 11:10:32.969 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:10:32.972 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:10:32.973 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 9.5385ms
+2024-07-16 11:10:32.973 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:32.974 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 11.6552ms
+2024-07-16 11:10:43.196 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:43.196 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:43.197 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.3429ms
+2024-07-16 11:10:43.201 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - application/json 17
+2024-07-16 11:10:43.202 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:43.204 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:10:43.224 +03:00 [INF] Route matched with {action = "Create", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Guid]] Create(Notes.WebApi.Models.CreateNoteDto) on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:10:43.282 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-07-16 11:10:43.317 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi) in 92.8514ms
+2024-07-16 11:10:43.317 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:10:43.317 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - 400 null application/json; charset=utf-8 116.5927ms
+2024-07-16 11:10:43.691 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:10:43.692 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:10:43.692 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:43.693 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:10:43.693 +03:00 [INF] Notes Request: GetNoteListQuery, "bb8b0632-1269-4594-afd2-489b2baf6246", {"UserId":"bb8b0632-1269-4594-afd2-489b2baf6246","$type":"GetNoteListQuery"}
+2024-07-16 11:10:43.699 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:10:43.701 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:10:43.703 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 10.2253ms
+2024-07-16 11:10:43.703 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:10:43.703 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 12.6046ms
+2024-07-16 11:22:35.285 +03:00 [INF] Executed DbCommand (88ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 11:22:35.588 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 11:22:35.779 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 11:22:35.780 +03:00 [INF] Hosting environment: Development
+2024-07-16 11:22:35.781 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 11:22:35.825 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 11:22:36.180 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 368.3708ms
+2024-07-16 11:22:36.207 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 11:22:36.213 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 4.5307ms
+2024-07-16 11:22:36.219 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 11:22:36.267 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.3148ms
+2024-07-16 11:22:36.510 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 11:22:36.675 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 165.1826ms
+2024-07-16 11:23:13.503 +03:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 11:23:13.697 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 11:23:13.816 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 11:23:13.817 +03:00 [INF] Hosting environment: Development
+2024-07-16 11:23:13.817 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 11:23:13.839 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 11:23:14.043 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 211.3315ms
+2024-07-16 11:23:14.081 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 11:23:14.087 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 5.1508ms
+2024-07-16 11:23:14.103 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 11:23:14.133 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.7899ms
+2024-07-16 11:23:14.375 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 11:23:14.533 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 157.3279ms
+2024-07-16 11:23:23.057 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:23.057 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:23.101 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:23.101 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:23.105 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 48.1597ms
+2024-07-16 11:23:23.111 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:23.112 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 55.0701ms
+2024-07-16 11:23:23.126 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:23.251 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 11:23:23.258 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 11:23:23.261 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 149.9376ms
+2024-07-16 11:23:23.264 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:23.265 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:23.271 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 11:23:23.272 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 11:23:23.273 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 8.737ms
+2024-07-16 11:23:38.518 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:38.521 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:38.521 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:38.521 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:38.522 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 0.7555ms
+2024-07-16 11:23:38.522 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 4.8283ms
+2024-07-16 11:23:38.528 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:38.528 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:38.821 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:23:38.852 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:23:39.047 +03:00 [INF] Notes Request: GetNoteListQuery, "2c9a6f3f-0128-4c62-8c6b-491c0d2be56b", {"UserId":"2c9a6f3f-0128-4c62-8c6b-491c0d2be56b","$type":"GetNoteListQuery"}
+2024-07-16 11:23:39.517 +03:00 [INF] Executed DbCommand (28ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:23:39.546 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:23:39.591 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:39.591 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:39.594 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 737.8197ms
+2024-07-16 11:23:39.594 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:23:39.594 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:23:39.594 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:23:39.597 +03:00 [INF] Notes Request: GetNoteListQuery, "2c9a6f3f-0128-4c62-8c6b-491c0d2be56b", {"UserId":"2c9a6f3f-0128-4c62-8c6b-491c0d2be56b","$type":"GetNoteListQuery"}
+2024-07-16 11:23:39.599 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 1071.7143ms
+2024-07-16 11:23:39.672 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:23:39.675 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:23:39.675 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 80.8262ms
+2024-07-16 11:23:39.676 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:23:39.676 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 84.9652ms
+2024-07-16 11:23:45.247 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:45.247 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:45.248 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.4735ms
+2024-07-16 11:23:45.252 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - application/json 17
+2024-07-16 11:23:45.252 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:45.254 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:23:45.274 +03:00 [INF] Route matched with {action = "Create", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Guid]] Create(Notes.WebApi.Models.CreateNoteDto) on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:23:45.324 +03:00 [INF] Received CreateNoteDto: {"Title":"Note1","Details":null,"$type":"CreateNoteDto"}
+2024-07-16 11:23:45.366 +03:00 [INF] Notes Request: CreateNoteCommand, "2c9a6f3f-0128-4c62-8c6b-491c0d2be56b", {"UserId":"2c9a6f3f-0128-4c62-8c6b-491c0d2be56b","Title":"Note1","Details":null,"$type":"CreateNoteCommand"}
+2024-07-16 11:23:45.636 +03:00 [ERR] Failed executing DbCommand (44ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Notes" ("Id", "CreationDate", "Details", "EditDate", "Title", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-07-16 11:23:45.699 +03:00 [ERR] An exception occurred in the database while saving changes for context type 'Notes.Persistance.NotesDbContextPostgre'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: значение NULL в столбце "Details" отношения "Notes" нарушает ограничение NOT NULL
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23502
+    MessageText: значение NULL в столбце "Details" отношения "Notes" нарушает ограничение NOT NULL
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Notes
+    ColumnName: Details
+    File: execMain.c
+    Line: 1974
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: значение NULL в столбце "Details" отношения "Notes" нарушает ограничение NOT NULL
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ОШИБКА
+    SqlState: 23502
+    MessageText: значение NULL в столбце "Details" отношения "Notes" нарушает ограничение NOT NULL
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Notes
+    ColumnName: Details
+    File: execMain.c
+    Line: 1974
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2024-07-16 11:23:45.842 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:23:45.843 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:23:45.844 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:23:45.865 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:23:45.941 +03:00 [INF] Notes Request: GetNoteListQuery, "2c9a6f3f-0128-4c62-8c6b-491c0d2be56b", {"UserId":"2c9a6f3f-0128-4c62-8c6b-491c0d2be56b","$type":"GetNoteListQuery"}
+2024-07-16 11:23:46.016 +03:00 [INF] Executed DbCommand (46ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:23:46.017 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:23:46.018 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 152.0642ms
+2024-07-16 11:23:46.018 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:23:46.018 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi) in 744.0432ms
+2024-07-16 11:23:46.018 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 176.282ms
+2024-07-16 11:23:46.019 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:23:46.132 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - 500 null application/json 880.227ms
+2024-07-16 11:32:14.422 +03:00 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 11:32:14.625 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 11:32:14.739 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 11:32:14.739 +03:00 [INF] Hosting environment: Development
+2024-07-16 11:32:14.777 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 11:32:14.802 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 11:32:15.043 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 249.1984ms
+2024-07-16 11:32:15.044 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 11:32:15.050 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 4.6535ms
+2024-07-16 11:32:15.065 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 11:32:15.115 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.957ms
+2024-07-16 11:32:15.358 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 11:32:15.537 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 193.3014ms
+2024-07-16 11:32:57.885 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:32:57.897 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:32:57.966 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:32:57.966 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:32:57.971 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 86.7464ms
+2024-07-16 11:32:57.977 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:32:57.977 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 79.77ms
+2024-07-16 11:32:57.992 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:32:58.103 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 11:32:58.110 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 11:32:58.113 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 136.3248ms
+2024-07-16 11:32:58.122 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:32:58.122 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:32:58.129 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 11:32:58.129 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 11:32:58.130 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 8.7839ms
+2024-07-16 11:33:05.624 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:33:05.624 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:33:05.624 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:33:05.624 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:33:05.625 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.1607ms
+2024-07-16 11:33:05.625 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.1606ms
+2024-07-16 11:33:05.643 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:33:05.644 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:33:05.647 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 11:33:05.647 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 11:33:05.648 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 4.9285ms
+2024-07-16 11:33:05.657 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:33:05.658 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:33:05.658 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 11:33:05.658 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 11:33:05.659 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.6624ms
+2024-07-16 11:33:23.176 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:33:23.177 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:33:23.177 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:33:23.177 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:33:23.177 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 4.5411ms
+2024-07-16 11:33:23.177 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 0.7239ms
+2024-07-16 11:33:23.183 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:33:23.184 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:33:23.506 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:33:23.543 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:33:23.759 +03:00 [INF] Notes Request: GetNoteListQuery, "6f782e78-541d-4f45-8218-6c36fa4fa758", {"UserId":"6f782e78-541d-4f45-8218-6c36fa4fa758","$type":"GetNoteListQuery"}
+2024-07-16 11:33:24.220 +03:00 [INF] Executed DbCommand (29ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:33:24.247 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:33:24.295 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:33:24.296 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:33:24.297 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:33:24.298 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:33:24.299 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 751.4813ms
+2024-07-16 11:33:24.300 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:33:24.300 +03:00 [INF] Notes Request: GetNoteListQuery, "6f782e78-541d-4f45-8218-6c36fa4fa758", {"UserId":"6f782e78-541d-4f45-8218-6c36fa4fa758","$type":"GetNoteListQuery"}
+2024-07-16 11:33:24.305 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 1122.4957ms
+2024-07-16 11:33:24.394 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:33:24.399 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:33:24.401 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 103.0965ms
+2024-07-16 11:33:24.401 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:33:24.402 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 106.5319ms
+2024-07-16 11:34:23.818 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:34:23.818 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:34:23.819 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.3116ms
+2024-07-16 11:34:23.823 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - application/json 17
+2024-07-16 11:34:23.824 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:34:23.826 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:34:23.840 +03:00 [INF] Route matched with {action = "Create", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Guid]] Create(Notes.WebApi.Models.CreateNoteDto) on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:34:23.903 +03:00 [INF] Received CreateNoteDto: {"Title":"Note1","Details":null,"$type":"CreateNoteDto"}
+2024-07-16 11:34:23.942 +03:00 [INF] Notes Request: CreateNoteCommand, "6f782e78-541d-4f45-8218-6c36fa4fa758", {"UserId":"6f782e78-541d-4f45-8218-6c36fa4fa758","Title":"Note1","Details":null,"$type":"CreateNoteCommand"}
+2024-07-16 11:34:24.222 +03:00 [INF] Executed DbCommand (33ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Notes" ("Id", "CreationDate", "Details", "EditDate", "Title", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-07-16 11:34:24.246 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Guid'.
+2024-07-16 11:34:24.251 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi) in 410.7679ms
+2024-07-16 11:34:24.251 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:34:24.252 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 428.6426ms
+2024-07-16 11:34:24.297 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:34:24.297 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:34:24.298 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:34:24.298 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:34:24.301 +03:00 [INF] Notes Request: GetNoteListQuery, "6f782e78-541d-4f45-8218-6c36fa4fa758", {"UserId":"6f782e78-541d-4f45-8218-6c36fa4fa758","$type":"GetNoteListQuery"}
+2024-07-16 11:34:24.311 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:34:24.320 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:34:24.324 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 25.37ms
+2024-07-16 11:34:24.324 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:34:24.325 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 28.0189ms
+2024-07-16 11:34:28.244 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - application/json 17
+2024-07-16 11:34:28.244 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:34:28.245 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:34:28.245 +03:00 [INF] Route matched with {action = "Create", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Guid]] Create(Notes.WebApi.Models.CreateNoteDto) on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:34:28.247 +03:00 [INF] Received CreateNoteDto: {"Title":"Note2","Details":null,"$type":"CreateNoteDto"}
+2024-07-16 11:34:28.249 +03:00 [INF] Notes Request: CreateNoteCommand, "6f782e78-541d-4f45-8218-6c36fa4fa758", {"UserId":"6f782e78-541d-4f45-8218-6c36fa4fa758","Title":"Note2","Details":null,"$type":"CreateNoteCommand"}
+2024-07-16 11:34:28.257 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Notes" ("Id", "CreationDate", "Details", "EditDate", "Title", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-07-16 11:34:28.259 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Guid'.
+2024-07-16 11:34:28.259 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi) in 14.1589ms
+2024-07-16 11:34:28.260 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:34:28.260 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 16.2854ms
+2024-07-16 11:34:28.743 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:34:28.743 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:34:28.744 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:34:28.744 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:34:28.744 +03:00 [INF] Notes Request: GetNoteListQuery, "6f782e78-541d-4f45-8218-6c36fa4fa758", {"UserId":"6f782e78-541d-4f45-8218-6c36fa4fa758","$type":"GetNoteListQuery"}
+2024-07-16 11:34:28.748 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:34:28.752 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:34:28.752 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 8.2268ms
+2024-07-16 11:34:28.752 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:34:28.753 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 10.2457ms
+2024-07-16 11:34:35.997 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:34:35.998 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:34:35.998 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0804ms
+2024-07-16 11:34:36.002 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - application/json 40
+2024-07-16 11:34:36.003 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:34:36.004 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:34:36.004 +03:00 [INF] Route matched with {action = "Create", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Guid]] Create(Notes.WebApi.Models.CreateNoteDto) on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:34:36.004 +03:00 [INF] Received CreateNoteDto: {"Title":"Сделай зарядку!","Details":null,"$type":"CreateNoteDto"}
+2024-07-16 11:34:36.006 +03:00 [INF] Notes Request: CreateNoteCommand, "6f782e78-541d-4f45-8218-6c36fa4fa758", {"UserId":"6f782e78-541d-4f45-8218-6c36fa4fa758","Title":"Сделай зарядку!","Details":null,"$type":"CreateNoteCommand"}
+2024-07-16 11:34:36.010 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Notes" ("Id", "CreationDate", "Details", "EditDate", "Title", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-07-16 11:34:36.013 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Guid'.
+2024-07-16 11:34:36.014 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi) in 10.6378ms
+2024-07-16 11:34:36.015 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 11:34:36.015 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 12.416ms
+2024-07-16 11:34:36.480 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 11:34:36.481 +03:00 [INF] CORS policy execution successful.
+2024-07-16 11:34:36.481 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:34:36.482 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 11:34:36.482 +03:00 [INF] Notes Request: GetNoteListQuery, "6f782e78-541d-4f45-8218-6c36fa4fa758", {"UserId":"6f782e78-541d-4f45-8218-6c36fa4fa758","$type":"GetNoteListQuery"}
+2024-07-16 11:34:36.489 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 11:34:36.489 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 11:34:36.490 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 8.606ms
+2024-07-16 11:34:36.490 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 11:34:36.491 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 10.6549ms
+2024-07-16 20:33:44.439 +03:00 [INF] Executed DbCommand (132ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 20:33:45.058 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 20:33:45.557 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 20:33:45.558 +03:00 [INF] Hosting environment: Development
+2024-07-16 20:33:45.558 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 20:33:45.782 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 20:33:46.236 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 471.5581ms
+2024-07-16 20:33:46.288 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 20:33:46.302 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 20:33:46.305 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 7.1598ms
+2024-07-16 20:33:46.360 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 59.4915ms
+2024-07-16 20:33:46.638 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 20:33:46.818 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 178.3861ms
+2024-07-16 20:33:49.374 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:33:49.374 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:33:49.432 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:33:49.432 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:33:49.440 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 74.1687ms
+2024-07-16 20:33:49.442 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 67.5618ms
+2024-07-16 20:33:49.447 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:33:49.465 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:33:49.582 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 20:33:49.588 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 20:33:49.592 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 144.91ms
+2024-07-16 20:33:49.596 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:33:49.597 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:33:49.603 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 20:33:49.604 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 20:33:49.604 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 8.9279ms
+2024-07-16 20:34:03.687 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:34:03.687 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:34:03.687 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:34:03.687 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:34:03.688 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0464ms
+2024-07-16 20:34:03.688 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0393ms
+2024-07-16 20:34:03.692 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:34:03.693 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:34:03.695 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 20:34:03.696 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 20:34:03.697 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 4.5196ms
+2024-07-16 20:34:03.707 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:34:03.708 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:34:03.708 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 20:34:03.708 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 20:34:03.709 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.5785ms
+2024-07-16 20:36:47.146 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 20:36:47.361 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 20:36:47.503 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 20:36:47.509 +03:00 [INF] Hosting environment: Development
+2024-07-16 20:36:47.509 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-16 20:36:47.535 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-16 20:36:47.809 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 280.476ms
+2024-07-16 20:36:47.899 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-16 20:36:47.934 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 33.4164ms
+2024-07-16 20:36:47.983 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-16 20:36:48.038 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.4603ms
+2024-07-16 20:36:48.268 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-16 20:36:48.440 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 172.6324ms
+2024-07-16 20:36:59.661 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:36:59.664 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:36:59.703 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:36:59.703 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:36:59.707 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 42.6131ms
+2024-07-16 20:36:59.708 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 47.3746ms
+2024-07-16 20:36:59.712 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:36:59.727 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:36:59.835 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 20:36:59.841 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 20:36:59.843 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 131.1754ms
+2024-07-16 20:36:59.845 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:36:59.846 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:36:59.851 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-16 20:36:59.852 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-16 20:36:59.853 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 8.083ms
+2024-07-16 20:38:17.317 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:38:17.317 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:38:17.317 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:38:17.317 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:38:17.317 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0416ms
+2024-07-16 20:38:17.318 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0416ms
+2024-07-16 20:38:17.328 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:38:17.328 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:38:17.599 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 20:38:17.624 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 20:38:17.899 +03:00 [INF] Notes Request: GetNoteListQuery, "6391db63-8526-4f68-a5c9-649e05d86356", {"UserId":"6391db63-8526-4f68-a5c9-649e05d86356","$type":"GetNoteListQuery"}
+2024-07-16 20:38:18.350 +03:00 [INF] Executed DbCommand (23ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 20:38:18.379 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 20:38:18.426 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:38:18.427 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:38:18.429 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 801.5861ms
+2024-07-16 20:38:18.429 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 20:38:18.430 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 20:38:18.430 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 20:38:18.432 +03:00 [INF] Notes Request: GetNoteListQuery, "6391db63-8526-4f68-a5c9-649e05d86356", {"UserId":"6391db63-8526-4f68-a5c9-649e05d86356","$type":"GetNoteListQuery"}
+2024-07-16 20:38:18.434 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 1106.4802ms
+2024-07-16 20:38:18.515 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 20:38:18.519 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 20:38:18.520 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 90.1024ms
+2024-07-16 20:38:18.520 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 20:38:18.521 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 94.0967ms
+2024-07-16 20:39:25.445 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:39:25.445 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:39:25.446 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 2.0729ms
+2024-07-16 20:39:25.451 +03:00 [INF] Request starting HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - application/json 23
+2024-07-16 20:39:25.452 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:39:25.454 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 20:39:25.470 +03:00 [INF] Route matched with {action = "Create", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Guid]] Create(Notes.WebApi.Models.CreateNoteDto) on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 20:39:25.525 +03:00 [INF] Received CreateNoteDto: {"Title":"First Note!","Details":null,"$type":"CreateNoteDto"}
+2024-07-16 20:39:25.560 +03:00 [INF] Notes Request: CreateNoteCommand, "6391db63-8526-4f68-a5c9-649e05d86356", {"UserId":"6391db63-8526-4f68-a5c9-649e05d86356","Title":"First Note!","Details":null,"$type":"CreateNoteCommand"}
+2024-07-16 20:39:25.808 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Notes" ("Id", "CreationDate", "Details", "EditDate", "Title", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2024-07-16 20:39:25.832 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Guid'.
+2024-07-16 20:39:25.836 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi) in 365.5755ms
+2024-07-16 20:39:25.836 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.Create (Notes.WebApi)'
+2024-07-16 20:39:25.837 +03:00 [INF] Request finished HTTP/2 POST https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 386.1272ms
+2024-07-16 20:39:25.937 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-16 20:39:25.937 +03:00 [INF] CORS policy execution successful.
+2024-07-16 20:39:25.938 +03:00 [INF] Executing endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 20:39:25.938 +03:00 [INF] Route matched with {action = "GetAll", controller = "Note"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm]] GetAll() on controller Notes.WebApi.Controllers.NoteController (Notes.WebApi).
+2024-07-16 20:39:25.940 +03:00 [INF] Notes Request: GetNoteListQuery, "6391db63-8526-4f68-a5c9-649e05d86356", {"UserId":"6391db63-8526-4f68-a5c9-649e05d86356","$type":"GetNoteListQuery"}
+2024-07-16 20:39:25.945 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__request_UserId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT n."Id", n."Title"
+FROM "Notes" AS n
+WHERE n."UserId" = @__request_UserId_0
+2024-07-16 20:39:25.952 +03:00 [INF] Executing OkObjectResult, writing value of type 'Notes.Application.NotesCQRS.Queries.GetNoteList.NoteListVm'.
+2024-07-16 20:39:25.956 +03:00 [INF] Executed action Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi) in 18.2293ms
+2024-07-16 20:39:25.957 +03:00 [INF] Executed endpoint 'Notes.WebApi.Controllers.NoteController.GetAll (Notes.WebApi)'
+2024-07-16 20:39:25.957 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 200 null application/json; charset=utf-8 20.3548ms

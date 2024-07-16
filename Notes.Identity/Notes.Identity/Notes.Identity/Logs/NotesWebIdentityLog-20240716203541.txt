@@ -1,0 +1,31 @@
+2024-07-16 20:35:42.846 +03:00 [INF] Executed DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 20:35:42.871 +03:00 [INF] Starting Duende IdentityServer version 7.0.5+11906052da057e72f04ee755c1f4953b6cb93ac3 (.NET 8.0.0-rc.2.23479.6)
+2024-07-16 20:35:42.885 +03:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2024-07-16 20:35:42.885 +03:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2024-07-16 20:35:42.890 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2024-07-16 20:35:42.894 +03:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2024-07-16 20:35:43.058 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 20:35:43.177 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 20:35:43.177 +03:00 [INF] Hosting environment: Development
+2024-07-16 20:35:43.177 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity
+2024-07-16 20:35:43.223 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/ - null null
+2024-07-16 20:35:43.400 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/ - 404 null null 187.8574ms
+2024-07-16 20:35:43.403 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44325/, Response status code: 404

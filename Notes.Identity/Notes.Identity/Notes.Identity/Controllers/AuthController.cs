@@ -1,6 +1,7 @@
-﻿using IdentityServer4.Services;
+﻿using Duende.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Notes.Identity.DebugModelProperties;
 using Notes.Identity.Models;
 
 namespace Notes.Identity.Controllers;
@@ -64,15 +65,18 @@ public class AuthController : Controller
     {
         if (!ModelState.IsValid)
         {
-            return View(model);
+            //return View(model);
+            return RedirectToAction("Error", "Home", new { message = "Invalid registration data. Please try again." });
         }
 
         var user = new AppUser
-        { 
-            UserName = model.UserName 
+        {
+            UserName = model.UserName,
+            FirstName = ""
         };
-
+        await DebugAppUserRegisterProccess.CheckModelProperties(user);
         var result = await _userManager.CreateAsync(user, model.Password);
+
         if (result.Succeeded)
         {
             await _signInManager.SignInAsync(user, false);

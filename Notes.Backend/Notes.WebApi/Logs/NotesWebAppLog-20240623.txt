@@ -34,3 +34,88 @@ WHERE
 2024-06-23 15:21:42.304 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
 2024-06-23 15:21:42.304 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/favicon-32x32.png - 200 628 image/png 18.0539ms
 2024-06-23 15:21:42.434 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 170.898ms
+2024-06-23 19:01:57.073 +03:00 [INF] Executed DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-06-23 19:01:57.440 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-23 19:01:57.866 +03:00 [INF] Now listening on: https://localhost:7061
+2024-06-23 19:01:57.866 +03:00 [INF] Now listening on: http://localhost:5208
+2024-06-23 19:01:57.868 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-23 19:01:57.868 +03:00 [INF] Hosting environment: Development
+2024-06-23 19:01:57.868 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-06-23 19:01:59.660 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/index.html - null null
+2024-06-23 19:02:00.032 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/index.html - 200 null text/html;charset=utf-8 379.5581ms
+2024-06-23 19:02:00.043 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/_framework/aspnetcore-browser-refresh.js - null null
+2024-06-23 19:02:00.050 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 7.8845ms
+2024-06-23 19:02:00.059 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/_vs/browserLink - null null
+2024-06-23 19:02:00.127 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/_vs/browserLink - 200 null text/javascript; charset=UTF-8 68.467ms
+2024-06-23 19:02:00.263 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - null null
+2024-06-23 19:02:00.426 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 163.6652ms
+2024-06-23 19:02:06.031 +03:00 [INF] Executed DbCommand (77ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-06-23 19:02:06.274 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-23 19:02:06.397 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-23 19:02:06.397 +03:00 [INF] Hosting environment: Development
+2024-06-23 19:02:06.397 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-06-23 19:02:06.489 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/ - null null
+2024-06-23 19:02:06.688 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-06-23 19:02:06.694 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/ - 301 null null 211.7119ms
+2024-06-23 19:02:06.786 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 98.14ms
+2024-06-23 19:02:06.790 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger-ui.css - null null
+2024-06-23 19:02:06.790 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger-ui-bundle.js - null null
+2024-06-23 19:02:06.795 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger-ui-standalone-preset.js - null null
+2024-06-23 19:02:06.819 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-06-23 19:02:06.819 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-06-23 19:02:06.832 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger-ui.css - 200 152034 text/css 40.754ms
+2024-06-23 19:02:06.836 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger-ui-standalone-preset.js - 200 230280 text/javascript 41.0164ms
+2024-06-23 19:02:06.841 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-06-23 19:02:06.841 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-06-23 19:02:06.844 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 2.2813ms
+2024-06-23 19:02:06.844 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-06-23 19:02:06.875 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger-ui-bundle.js - 200 1456926 text/javascript 85.2673ms
+2024-06-23 19:02:06.882 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.7229ms
+2024-06-23 19:02:07.280 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-06-23 19:02:07.299 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/favicon-32x32.png - null null
+2024-06-23 19:02:07.300 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-06-23 19:02:07.300 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/favicon-32x32.png - 200 628 image/png 1.7105ms
+2024-06-23 19:02:07.400 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 120.307ms
+2024-06-23 19:02:29.990 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-06-23 19:02:30.013 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.2339ms
+2024-06-23 19:02:30.070 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/favicon.ico - null null
+2024-06-23 19:02:30.172 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/favicon.ico - 404 null null 101.74ms
+2024-06-23 19:02:30.175 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/favicon.ico, Response status code: 404
+2024-06-23 19:03:19.194 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-06-23 19:03:19.206 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.3405ms

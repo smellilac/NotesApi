@@ -1,0 +1,973 @@
+2024-07-04 19:18:32.582 +03:00 [INF] Executed DbCommand (108ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 19:18:33.019 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 19:18:33.444 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 19:18:33.445 +03:00 [INF] Hosting environment: Development
+2024-07-04 19:18:33.445 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 19:18:33.539 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/ - null null
+2024-07-04 19:18:34.330 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 19:18:34.378 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/ - 301 null null 851.8398ms
+2024-07-04 19:18:34.511 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 181.9098ms
+2024-07-04 19:18:34.518 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger-ui.css - null null
+2024-07-04 19:18:34.518 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger-ui-standalone-preset.js - null null
+2024-07-04 19:18:34.518 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger-ui-bundle.js - null null
+2024-07-04 19:18:34.549 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-07-04 19:18:34.549 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-07-04 19:18:34.553 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger-ui.css - 200 152034 text/css 34.6592ms
+2024-07-04 19:18:34.557 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger-ui-standalone-preset.js - 200 230280 text/javascript 38.2988ms
+2024-07-04 19:18:34.563 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 19:18:34.570 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-07-04 19:18:34.570 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 19:18:34.570 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 3.1343ms
+2024-07-04 19:18:34.610 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger-ui-bundle.js - 200 1456926 text/javascript 91.8664ms
+2024-07-04 19:18:34.649 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 79.1009ms
+2024-07-04 19:18:35.119 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 19:18:35.119 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/favicon-32x32.png - null null
+2024-07-04 19:18:35.120 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-07-04 19:18:35.121 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/favicon-32x32.png - 200 628 image/png 1.4702ms
+2024-07-04 19:18:35.278 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 158.8215ms
+2024-07-04 19:18:47.902 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:18:47.902 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:18:47.943 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:18:47.943 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:18:47.946 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 43.5305ms
+2024-07-04 19:18:47.948 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 45.9236ms
+2024-07-04 19:18:47.959 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:18:47.975 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:18:48.088 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:18:48.093 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:18:48.095 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 136.0026ms
+2024-07-04 19:18:48.135 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:18:48.136 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:18:48.141 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:18:48.142 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:18:48.143 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 7.4186ms
+2024-07-04 19:18:58.944 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:18:58.946 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:18:58.947 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 3.2969ms
+2024-07-04 19:18:58.962 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:18:58.962 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:18:58.963 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:18:58.963 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:18:58.964 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 2.6194ms
+2024-07-04 19:18:58.967 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:18:58.967 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:18:58.970 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 8.3463ms
+2024-07-04 19:18:58.980 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:18:58.980 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:18:58.981 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:18:58.981 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:18:58.982 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.9647ms
+2024-07-04 19:25:26.043 +03:00 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 19:25:26.217 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 19:25:26.335 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 19:25:26.335 +03:00 [INF] Hosting environment: Development
+2024-07-04 19:25:26.336 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 19:25:26.356 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 19:25:26.549 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 199.4442ms
+2024-07-04 19:25:26.565 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 19:25:26.576 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 3.7486ms
+2024-07-04 19:25:26.582 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 19:25:26.614 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.5036ms
+2024-07-04 19:25:27.105 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 19:25:27.204 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 98.6252ms
+2024-07-04 19:26:53.583 +03:00 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 19:26:53.891 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 19:26:54.065 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 19:26:54.073 +03:00 [INF] Hosting environment: Development
+2024-07-04 19:26:54.073 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 19:26:54.115 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 19:26:55.217 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 1113.628ms
+2024-07-04 19:26:55.279 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 19:26:55.292 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 7.0151ms
+2024-07-04 19:26:55.304 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 19:26:55.369 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 65.4678ms
+2024-07-04 19:26:55.749 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 19:26:56.017 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 267.5099ms
+2024-07-04 19:27:11.345 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:27:11.345 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:27:11.387 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:27:11.387 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:27:11.392 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 46.2847ms
+2024-07-04 19:27:11.393 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 47.3408ms
+2024-07-04 19:27:11.402 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:27:11.418 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:27:11.528 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:27:11.532 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:27:11.534 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 132.2882ms
+2024-07-04 19:27:11.537 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:27:11.537 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:27:11.543 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:27:11.543 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:27:11.544 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 7.3317ms
+2024-07-04 19:29:16.152 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:29:16.154 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:29:16.154 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:29:16.159 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:29:16.159 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 6.1633ms
+2024-07-04 19:29:16.162 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 9.2428ms
+2024-07-04 19:29:16.173 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:29:16.173 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:29:16.176 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:29:16.176 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:29:16.177 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 4.2497ms
+2024-07-04 19:29:16.180 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:29:16.180 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:29:16.181 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:29:16.181 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:29:16.182 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 2.0726ms
+2024-07-04 19:31:59.599 +03:00 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 19:31:59.803 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 19:31:59.998 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 19:32:00.005 +03:00 [INF] Hosting environment: Development
+2024-07-04 19:32:00.005 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 19:32:00.051 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 19:32:00.411 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 377.7005ms
+2024-07-04 19:32:00.558 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 19:32:00.562 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 19:32:00.572 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 8.0522ms
+2024-07-04 19:32:00.661 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 81.5598ms
+2024-07-04 19:32:01.195 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 19:32:01.360 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 163.2134ms
+2024-07-04 19:32:14.660 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:32:14.660 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:32:14.692 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:32:14.692 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:32:14.696 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 35.1799ms
+2024-07-04 19:32:14.706 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:32:14.706 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 45.8651ms
+2024-07-04 19:32:14.718 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:32:14.817 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:32:14.821 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:32:14.823 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 117.1526ms
+2024-07-04 19:32:14.825 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:32:14.825 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:32:14.830 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:32:14.830 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:32:14.831 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 6.4958ms
+2024-07-04 19:32:22.047 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:32:22.047 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:32:22.048 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:32:22.048 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:32:22.048 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 0.8471ms
+2024-07-04 19:32:22.048 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 0.8469ms
+2024-07-04 19:32:22.128 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:32:22.129 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:32:22.144 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:32:22.145 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:32:22.145 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 17.3784ms
+2024-07-04 19:32:22.150 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 19:32:22.150 +03:00 [INF] CORS policy execution successful.
+2024-07-04 19:32:22.151 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 19:32:22.151 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 19:32:22.152 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.9272ms
+2024-07-04 19:36:55.674 +03:00 [INF] Executed DbCommand (81ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 19:36:55.954 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 19:36:56.100 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 19:36:56.105 +03:00 [INF] Hosting environment: Development
+2024-07-04 19:36:56.105 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 19:36:56.140 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 19:36:56.378 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 247.932ms
+2024-07-04 19:36:56.410 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 19:36:56.415 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 4.6441ms
+2024-07-04 19:36:56.421 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 19:36:56.461 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 39.9064ms
+2024-07-04 19:36:56.678 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 19:36:56.783 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 104.5908ms
+2024-07-04 19:40:26.535 +03:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 19:40:26.762 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 19:40:26.975 +03:00 [INF] Now listening on: https://localhost:7061
+2024-07-04 19:40:26.975 +03:00 [INF] Now listening on: http://localhost:5208
+2024-07-04 19:40:26.977 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 19:40:26.977 +03:00 [INF] Hosting environment: Development
+2024-07-04 19:40:26.977 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 19:40:29.410 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/ - null null
+2024-07-04 19:40:29.525 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/ - 301 0 null 122.657ms
+2024-07-04 19:40:29.535 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/index.html - null null
+2024-07-04 19:40:29.659 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/index.html - 200 null text/html;charset=utf-8 124.6026ms
+2024-07-04 19:40:29.664 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/swagger-ui.css - null null
+2024-07-04 19:40:29.665 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/swagger-ui-bundle.js - null null
+2024-07-04 19:40:29.665 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/swagger-ui-standalone-preset.js - null null
+2024-07-04 19:40:29.688 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 19:40:29.689 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/_vs/browserLink - null null
+2024-07-04 19:40:29.706 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 18.0446ms
+2024-07-04 19:40:29.715 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-07-04 19:40:29.715 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-07-04 19:40:29.716 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/swagger-ui-standalone-preset.js - 200 230280 text/javascript 50.9064ms
+2024-07-04 19:40:29.716 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/swagger-ui.css - 200 152034 text/css 51.992ms
+2024-07-04 19:40:29.738 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-07-04 19:40:29.739 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/swagger-ui-bundle.js - 200 1456926 text/javascript 74.3703ms
+2024-07-04 19:40:29.754 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/_vs/browserLink - 200 null text/javascript; charset=UTF-8 65.5344ms
+2024-07-04 19:40:30.105 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - null null
+2024-07-04 19:40:30.124 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/favicon-32x32.png - null null
+2024-07-04 19:40:30.125 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-07-04 19:40:30.125 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/favicon-32x32.png - 200 628 image/png 1.0381ms
+2024-07-04 19:40:30.229 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 125.0768ms
+2024-07-04 20:24:51.606 +03:00 [INF] Executed DbCommand (112ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 20:24:51.919 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 20:24:52.318 +03:00 [INF] Now listening on: https://localhost:7061
+2024-07-04 20:24:52.318 +03:00 [INF] Now listening on: http://localhost:5208
+2024-07-04 20:24:52.321 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 20:24:52.322 +03:00 [INF] Hosting environment: Development
+2024-07-04 20:24:52.322 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 20:24:56.138 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/index.html - null null
+2024-07-04 20:24:56.562 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/index.html - 200 null text/html;charset=utf-8 439.4353ms
+2024-07-04 20:24:56.681 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 20:24:56.681 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/_vs/browserLink - null null
+2024-07-04 20:24:56.691 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 10.6148ms
+2024-07-04 20:24:56.772 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/_vs/browserLink - 200 null text/javascript; charset=UTF-8 91.5619ms
+2024-07-04 20:24:57.532 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - null null
+2024-07-04 20:24:57.741 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7061/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 209.3185ms
+2024-07-04 20:26:11.622 +03:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 20:26:11.895 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 20:26:12.047 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 20:26:12.047 +03:00 [INF] Hosting environment: Development
+2024-07-04 20:26:12.047 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 20:26:12.075 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 20:26:12.348 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 282.4712ms
+2024-07-04 20:26:12.379 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 20:26:12.386 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 5.5124ms
+2024-07-04 20:26:12.387 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 20:26:12.439 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.1843ms
+2024-07-04 20:26:12.671 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 20:26:12.817 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 146.3053ms
+2024-07-04 20:26:25.051 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:26:25.051 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:26:25.107 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:26:25.107 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:26:25.112 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 65.1137ms
+2024-07-04 20:26:25.118 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:26:25.118 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 67.7348ms
+2024-07-04 20:26:25.134 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:26:25.245 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:26:25.250 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:26:25.252 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 134.2578ms
+2024-07-04 20:26:25.257 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:26:25.258 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:26:25.264 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:26:25.265 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:26:25.266 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 9.1372ms
+2024-07-04 20:27:14.699 +03:00 [INF] Executed DbCommand (77ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 20:27:14.959 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 20:27:15.115 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 20:27:15.116 +03:00 [INF] Hosting environment: Development
+2024-07-04 20:27:15.116 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 20:27:15.156 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 20:27:15.431 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 289.3516ms
+2024-07-04 20:27:15.456 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 20:27:15.466 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 4.4898ms
+2024-07-04 20:27:15.474 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 20:27:15.524 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.2512ms
+2024-07-04 20:27:15.743 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 20:27:15.884 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 139.6481ms
+2024-07-04 20:27:26.099 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:27:26.099 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:27:26.146 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:27:26.146 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:27:26.150 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 50.4632ms
+2024-07-04 20:27:26.151 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 51.736ms
+2024-07-04 20:27:26.156 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:27:26.172 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:27:26.286 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:27:26.293 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:27:26.294 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 138.2391ms
+2024-07-04 20:27:26.316 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:27:26.316 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:27:26.323 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:27:26.324 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:27:26.325 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 9.7372ms
+2024-07-04 20:28:10.656 +03:00 [INF] Executed DbCommand (111ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 20:28:11.132 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 20:28:11.382 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 20:28:11.392 +03:00 [INF] Hosting environment: Development
+2024-07-04 20:28:11.392 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 20:28:11.435 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 20:28:11.947 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 527.6372ms
+2024-07-04 20:28:12.035 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 20:28:12.054 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 20:28:12.054 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 7.7475ms
+2024-07-04 20:28:12.128 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 74.3057ms
+2024-07-04 20:28:12.545 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 20:28:12.764 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 219.231ms
+2024-07-04 20:28:23.646 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:28:23.646 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:28:23.684 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:28:23.684 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:28:23.688 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 42.6531ms
+2024-07-04 20:28:23.690 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 44.0743ms
+2024-07-04 20:28:23.694 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:28:23.712 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:28:23.839 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:28:23.844 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:28:23.846 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 152.5509ms
+2024-07-04 20:28:23.852 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:28:23.852 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:28:23.857 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:28:23.857 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:28:23.858 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 6.5891ms
+2024-07-04 20:28:31.200 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:28:31.200 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:28:31.201 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:28:31.201 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:28:31.201 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0067ms
+2024-07-04 20:28:31.201 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.0068ms
+2024-07-04 20:28:31.206 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:28:31.207 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:28:31.210 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:28:31.210 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:28:31.211 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 4.3058ms
+2024-07-04 20:28:31.213 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:28:31.214 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:28:31.214 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:28:31.214 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:28:31.215 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.8589ms
+2024-07-04 20:29:40.244 +03:00 [INF] Executed DbCommand (142ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 20:29:40.817 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 20:29:41.075 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 20:29:41.076 +03:00 [INF] Hosting environment: Development
+2024-07-04 20:29:41.076 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 20:29:41.140 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 20:29:41.621 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 503.3046ms
+2024-07-04 20:29:41.682 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 20:29:41.694 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 9.6702ms
+2024-07-04 20:29:41.709 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 20:29:41.803 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 93.3657ms
+2024-07-04 20:29:42.251 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 20:29:42.465 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 214.1762ms
+2024-07-04 20:29:59.397 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:29:59.397 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:29:59.455 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:29:59.455 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:29:59.459 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 62.1947ms
+2024-07-04 20:29:59.466 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 69.1509ms
+2024-07-04 20:29:59.473 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:29:59.493 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:29:59.606 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:29:59.613 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:29:59.614 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 141.0267ms
+2024-07-04 20:29:59.617 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:29:59.618 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:29:59.623 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:29:59.624 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:29:59.624 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 7.587ms
+2024-07-04 20:30:07.444 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:30:07.445 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:30:07.445 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.7045ms
+2024-07-04 20:30:07.446 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:30:07.447 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:30:07.447 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.6899ms
+2024-07-04 20:30:07.453 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:30:07.454 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:30:07.466 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:30:07.466 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:30:07.467 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 14.474ms
+2024-07-04 20:30:07.487 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 20:30:07.488 +03:00 [INF] CORS policy execution successful.
+2024-07-04 20:30:07.488 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 20:30:07.488 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 20:30:07.489 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 2.3513ms
+2024-07-04 21:41:57.007 +03:00 [INF] Executed DbCommand (112ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 21:41:57.340 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 21:41:57.511 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 21:41:57.512 +03:00 [INF] Hosting environment: Development
+2024-07-04 21:41:57.512 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 21:41:57.550 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 21:41:57.937 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 399.351ms
+2024-07-04 21:41:57.978 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 21:41:57.999 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 8.9978ms
+2024-07-04 21:41:58.013 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 21:41:58.070 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 56.8363ms
+2024-07-04 21:41:58.465 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 21:41:58.666 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 202.0325ms
+2024-07-04 21:42:33.558 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:42:33.558 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:42:33.616 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:42:33.616 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:42:33.620 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 62.9018ms
+2024-07-04 21:42:33.622 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 64.3134ms
+2024-07-04 21:42:33.632 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:42:33.648 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:42:33.764 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:42:33.769 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:42:33.771 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 139.2908ms
+2024-07-04 21:42:33.773 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:42:33.774 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:42:33.780 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:42:33.780 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:42:33.781 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 7.7792ms
+2024-07-04 21:42:41.528 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:42:41.528 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:42:41.529 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:42:41.529 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:42:41.530 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.8377ms
+2024-07-04 21:42:41.529 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.8379ms
+2024-07-04 21:42:41.565 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:42:41.566 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:42:41.570 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:42:41.570 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:42:41.571 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 6.1889ms
+2024-07-04 21:42:41.575 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:42:41.576 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:42:41.577 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:42:41.577 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:42:41.578 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 2.6831ms
+2024-07-04 21:47:05.740 +03:00 [INF] Executed DbCommand (145ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 21:47:06.195 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 21:47:06.493 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 21:47:06.503 +03:00 [INF] Hosting environment: Development
+2024-07-04 21:47:06.503 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 21:47:06.559 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 21:47:06.922 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 382.0857ms
+2024-07-04 21:47:06.955 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 21:47:06.963 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 6.1809ms
+2024-07-04 21:47:06.971 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 21:47:07.059 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 87.8522ms
+2024-07-04 21:47:07.456 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 21:47:07.636 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 179.6553ms
+2024-07-04 21:47:21.691 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:47:21.691 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:47:21.746 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:47:21.746 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:47:21.751 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 62.8324ms
+2024-07-04 21:47:21.752 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 61.034ms
+2024-07-04 21:47:21.764 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:47:21.779 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:47:21.872 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:47:21.877 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:47:21.879 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 115.5892ms
+2024-07-04 21:47:21.882 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:47:21.883 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:47:21.889 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:47:21.889 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:47:21.890 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 8.4891ms
+2024-07-04 21:47:29.352 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:47:29.353 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:47:29.353 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.3592ms
+2024-07-04 21:47:29.355 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:47:29.355 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:47:29.355 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 0.8662ms
+2024-07-04 21:47:29.359 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:47:29.360 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:47:29.362 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:47:29.363 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:47:29.364 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 5.3266ms
+2024-07-04 21:47:29.396 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:47:29.396 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:47:29.397 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:47:29.397 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:47:29.397 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.7065ms
+2024-07-04 21:52:54.813 +03:00 [INF] Executed DbCommand (160ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 21:52:55.090 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 21:52:55.236 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 21:52:55.236 +03:00 [INF] Hosting environment: Development
+2024-07-04 21:52:55.236 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 21:52:55.265 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 21:52:55.564 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 308.8131ms
+2024-07-04 21:52:55.597 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 21:52:55.604 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 6.3322ms
+2024-07-04 21:52:55.606 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 21:52:55.669 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.905ms
+2024-07-04 21:52:56.032 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 21:52:56.335 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 303.4275ms
+2024-07-04 21:53:09.792 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:53:09.792 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:53:09.829 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:53:09.829 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:53:09.832 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 40.7717ms
+2024-07-04 21:53:09.833 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 41.9242ms
+2024-07-04 21:53:09.837 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:53:09.847 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:53:09.931 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:53:09.936 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:53:09.937 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 100.697ms
+2024-07-04 21:53:09.940 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 21:53:09.941 +03:00 [INF] CORS policy execution successful.
+2024-07-04 21:53:09.947 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 21:53:09.947 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 21:53:09.948 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 8.443ms
+2024-07-04 22:16:54.873 +03:00 [INF] Executed DbCommand (116ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 22:16:55.244 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 22:16:55.537 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 22:16:55.538 +03:00 [INF] Hosting environment: Development
+2024-07-04 22:16:55.538 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 22:16:55.636 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 22:16:55.959 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 332.863ms
+2024-07-04 22:16:55.990 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 22:16:55.997 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 6.009ms
+2024-07-04 22:16:55.998 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 22:16:56.051 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.6584ms
+2024-07-04 22:16:56.265 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 22:16:56.431 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 166.4592ms
+2024-07-04 22:17:09.158 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:17:09.158 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:17:09.188 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:17:09.188 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:17:09.191 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 33.3095ms
+2024-07-04 22:17:09.192 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 34.3267ms
+2024-07-04 22:17:09.195 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:17:09.206 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:17:09.292 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:17:09.297 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:17:09.299 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 104.2071ms
+2024-07-04 22:17:09.301 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:17:09.301 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:17:09.307 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:17:09.307 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:17:09.308 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 7.5331ms
+2024-07-04 22:17:13.508 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:17:13.509 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:17:13.511 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:17:13.511 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:17:13.513 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 4.8207ms
+2024-07-04 22:17:13.529 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:17:13.530 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:17:13.530 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:17:13.531 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:17:13.532 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 2.4603ms
+2024-07-04 22:22:11.400 +03:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 22:22:11.589 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 22:22:11.686 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 22:22:11.690 +03:00 [INF] Hosting environment: Development
+2024-07-04 22:22:11.690 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 22:22:11.710 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 22:22:11.876 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 171.6378ms
+2024-07-04 22:22:11.904 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 22:22:11.912 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 4.1559ms
+2024-07-04 22:22:11.913 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 22:22:11.945 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.4968ms
+2024-07-04 22:22:12.258 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 22:22:12.376 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 119.1602ms
+2024-07-04 22:22:23.875 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:23.875 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:23.909 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:23.909 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:23.913 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 38.134ms
+2024-07-04 22:22:23.914 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 39.2275ms
+2024-07-04 22:22:23.916 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:23.928 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:24.032 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:22:24.038 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:22:24.040 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 123.6788ms
+2024-07-04 22:22:24.042 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:24.042 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:24.047 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:22:24.047 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:22:24.048 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 6.4769ms
+2024-07-04 22:22:28.780 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:28.780 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:28.782 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:22:28.783 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:22:28.784 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 3.881ms
+2024-07-04 22:22:28.790 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:28.790 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:28.790 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:22:28.790 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:22:28.791 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.3428ms
+2024-07-04 22:22:32.020 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:32.026 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:32.026 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:32.026 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:32.027 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 6.5173ms
+2024-07-04 22:22:32.027 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 1.3745ms
+2024-07-04 22:22:32.037 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:32.038 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:32.038 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:22:32.038 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:22:32.039 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 2.0041ms
+2024-07-04 22:22:32.042 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:22:32.042 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:22:32.042 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:22:32.043 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:22:32.043 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.4683ms
+2024-07-04 22:24:04.995 +03:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-04 22:24:05.161 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 22:24:05.267 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 22:24:05.268 +03:00 [INF] Hosting environment: Development
+2024-07-04 22:24:05.268 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Backend\Notes.WebApi
+2024-07-04 22:24:05.290 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/index.html - null null
+2024-07-04 22:24:05.512 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/index.html - 200 null text/html;charset=utf-8 230.1623ms
+2024-07-04 22:24:05.539 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-04 22:24:05.546 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - null null
+2024-07-04 22:24:05.546 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 3.7382ms
+2024-07-04 22:24:05.576 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 null text/javascript; charset=UTF-8 30.29ms
+2024-07-04 22:24:05.834 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - null null
+2024-07-04 22:24:05.961 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 127.2932ms
+2024-07-04 22:24:13.237 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:24:13.237 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:24:13.276 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:24:13.276 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:24:13.279 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 42.4139ms
+2024-07-04 22:24:13.280 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:44351/api/Note?api-version=1.0 - 204 null null 43.2712ms
+2024-07-04 22:24:13.290 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:24:13.303 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:24:13.388 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:24:13.394 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:24:13.396 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 106.8941ms
+2024-07-04 22:24:13.398 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:24:13.399 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:24:13.404 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:24:13.404 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:24:13.405 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 7.0175ms
+2024-07-04 22:24:18.006 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:24:18.007 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:24:18.008 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:24:18.008 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:24:18.009 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 3.2234ms
+2024-07-04 22:24:18.019 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - null null
+2024-07-04 22:24:18.019 +03:00 [INF] CORS policy execution successful.
+2024-07-04 22:24:18.020 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-07-04 22:24:18.020 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2024-07-04 22:24:18.020 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44351/api/Note?api-version=1.0 - 401 null null 1.349ms

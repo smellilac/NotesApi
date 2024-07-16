@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Notes.WebApi.Services;
 using Serilog;
 using Serilog.Events;
+using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAutoMapper(cfg =>
@@ -30,10 +31,14 @@ builder.Services.AddAuthentication(config =>
 })
     .AddJwtBearer("Bearer", options =>
     {
-        options.Authority = "http://localhost:44325/";
+        options.Authority = "https://localhost:44325/";
         options.Audience = "NotesWebAPI";
         options.RequireHttpsMetadata = false;
-    });
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false
+        };
+     });
 builder.Services.AddControllers();
 
 builder.Services.AddCors(opt =>

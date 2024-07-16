@@ -7,6 +7,7 @@ using Notes.Application.NotesCQRS.Commands.UpdateNote;
 using Notes.Application.NotesCQRS.Queries.GetNoteDetails;
 using Notes.Application.NotesCQRS.Queries.GetNoteList;
 using Notes.WebApi.Models;
+using Serilog;
 
 namespace Notes.WebApi.Controllers;
 
@@ -88,6 +89,7 @@ public class NoteController : BaseController
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateNoteDto createNoteDto)
     {
+        Log.Information("Received CreateNoteDto: {@CreateNoteDto}", createNoteDto);
         var command = _mapper.Map<CreateNoteCommand>(createNoteDto);
         command.UserId = UserId;
         var vm = await Mediator.Send(command);

@@ -1,0 +1,53 @@
+2024-07-16 09:17:09.852 +03:00 [INF] Executed DbCommand (79ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2024-07-16 09:17:09.886 +03:00 [INF] Starting Duende IdentityServer version 7.0.5+11906052da057e72f04ee755c1f4953b6cb93ac3 (.NET 8.0.0-rc.2.23479.6)
+2024-07-16 09:17:09.897 +03:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2024-07-16 09:17:09.898 +03:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2024-07-16 09:17:09.903 +03:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2024-07-16 09:17:09.908 +03:00 [INF] Using the default authentication scheme Cookies for IdentityServer
+2024-07-16 09:17:10.247 +03:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-16 09:17:10.485 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-16 09:17:10.485 +03:00 [INF] Hosting environment: Development
+2024-07-16 09:17:10.486 +03:00 [INF] Content root path: C:\Users\User\source\repos\NotesAPI\Notes.Identity\Notes.Identity\Notes.Identity
+2024-07-16 09:17:10.569 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/ - null null
+2024-07-16 09:17:10.819 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/ - 404 null null 270.4375ms
+2024-07-16 09:17:10.824 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44325/, Response status code: 404
+2024-07-16 09:17:26.834 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - null null
+2024-07-16 09:17:26.851 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:26.896 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2024-07-16 09:17:27.144 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 310.3685ms
+2024-07-16 09:17:27.172 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/connect/authorize?client_id=notes-web-app&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsignin-oidc&response_type=code&scope=openid+profile+NotesWebAPI&state=1834ba33ad4543c4bd540d44c0c8ab01&code_challenge=jYURwX1tW-bWdWLPstVcBKXDS7iqgvN2m0Kdv7TA8ZI&code_challenge_method=S256 - null null
+2024-07-16 09:17:27.221 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeEndpoint for /connect/authorize
+2024-07-16 09:17:27.306 +03:00 [INF] Showing login: User is not authenticated
+2024-07-16 09:17:27.317 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/connect/authorize?client_id=notes-web-app&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsignin-oidc&response_type=code&scope=openid+profile+NotesWebAPI&state=1834ba33ad4543c4bd540d44c0c8ab01&code_challenge=jYURwX1tW-bWdWLPstVcBKXDS7iqgvN2m0Kdv7TA8ZI&code_challenge_method=S256 - 302 null null 143.5265ms
+2024-07-16 09:17:27.322 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dnotes-web-app%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520NotesWebAPI%26state%3D1834ba33ad4543c4bd540d44c0c8ab01%26code_challenge%3DjYURwX1tW-bWdWLPstVcBKXDS7iqgvN2m0Kdv7TA8ZI%26code_challenge_method%3DS256 - null null
+2024-07-16 09:17:27.326 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dnotes-web-app%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520NotesWebAPI%26state%3D1834ba33ad4543c4bd540d44c0c8ab01%26code_challenge%3DjYURwX1tW-bWdWLPstVcBKXDS7iqgvN2m0Kdv7TA8ZI%26code_challenge_method%3DS256 - 404 null null 4.8221ms
+2024-07-16 09:17:27.330 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44325/Account/Login, Response status code: 404
+2024-07-16 09:17:42.117 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - null null
+2024-07-16 09:17:42.118 +03:00 [INF] CORS policy execution successful.
+2024-07-16 09:17:42.123 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2024-07-16 09:17:42.127 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 10.2721ms
+2024-07-16 09:17:42.150 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/connect/authorize?client_id=notes-web-app&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsignin-oidc&response_type=code&scope=openid+profile+NotesWebAPI&state=1e12fea4166e47d9a88fc0b578f2b5fc&code_challenge=_jUS_nnWwdvdZQr32hf4KqKRECFwuBTFcmxgxgo3nyQ&code_challenge_method=S256 - null null
+2024-07-16 09:17:42.158 +03:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeEndpoint for /connect/authorize
+2024-07-16 09:17:42.159 +03:00 [INF] Showing login: User is not authenticated
+2024-07-16 09:17:42.160 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/connect/authorize?client_id=notes-web-app&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fsignin-oidc&response_type=code&scope=openid+profile+NotesWebAPI&state=1e12fea4166e47d9a88fc0b578f2b5fc&code_challenge=_jUS_nnWwdvdZQr32hf4KqKRECFwuBTFcmxgxgo3nyQ&code_challenge_method=S256 - 302 null null 10.7529ms
+2024-07-16 09:17:42.165 +03:00 [INF] Request starting HTTP/2 GET https://localhost:44325/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dnotes-web-app%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520NotesWebAPI%26state%3D1e12fea4166e47d9a88fc0b578f2b5fc%26code_challenge%3D_jUS_nnWwdvdZQr32hf4KqKRECFwuBTFcmxgxgo3nyQ%26code_challenge_method%3DS256 - null null
+2024-07-16 09:17:42.169 +03:00 [INF] Request finished HTTP/2 GET https://localhost:44325/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dnotes-web-app%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520NotesWebAPI%26state%3D1e12fea4166e47d9a88fc0b578f2b5fc%26code_challenge%3D_jUS_nnWwdvdZQr32hf4KqKRECFwuBTFcmxgxgo3nyQ%26code_challenge_method%3DS256 - 404 null null 3.9978ms
+2024-07-16 09:17:42.169 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44325/Account/Login, Response status code: 404
