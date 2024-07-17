@@ -11,7 +11,7 @@
 
 ## About
 
-...
+This project is composed of two ASP.NET Core APIs and a React application built with TypeScript. The first API handles note management functionality and leverages technologies such as .NET Core 8.0, ASP.NET Core 8.0, AutoMapper, MediatR with CQRS, Serilog, FluentValidation, and follows a clean architecture with established design patterns. The second API, using Duende IdentityServer, is dedicated to client access and resource protection. The third component is a React application that serves as the client interface for interacting with these APIs. This project is essential for developers looking for a robust example of modern web application architecture, offering both secure authentication and efficient note management features.
 
 ### Technologies, Patterns, Architecture
 
@@ -244,9 +244,9 @@ Notes.Frontend
 ### Demonstration of the application
 
 <p align="center">
-  <img src="[url_фото_1](https://ibb.co/JHhKhsP)" width="800" />
-  <img src="[url_фото_2](https://ibb.co/7g0YD42)" width="800" />
-  <img src="[url_фото_3](https://ibb.co/hRHNC3J)" width="800" />
-  <img src="[url_фото_4](https://ibb.co/LZZLpYg)" width="800" />
-  <img src="[url_фото_5](https://ibb.co/rdVnZCm)" width="800" />
+  <img src="![Main Page](https://iimg.su/s/17/1mxVQmRljQ0E8IaS0wC3s6eL4EHDxgamHfFH2oYi.png)"/>
+  <img src="![Login Page](https://drive.google.com/file/d/1JkIqdY2PPVcKDzB_JHK9gWfTyJ2dO7ee/view?usp=sharing)"/>
+  <img src="![Sign Up Page](https://drive.google.com/file/d/1PS6ZzyzijviRBD7_wuYcMl7oLd3NZtWo/view?usp=sharing)"/>
+  <img src="![Success Token](https://drive.google.com/file/d/1jLjjpYsWUQWgQ9facsXYChVORrlaBez2/view?usp=sharing)"/>
+  <img src="![Success Note](https://drive.google.com/file/d/1DGMG2UfOhac-WB3WyblOCa-5Z39Me2zW/view?usp=sharing)"/>
 </p>
