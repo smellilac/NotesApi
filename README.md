@@ -1,6 +1,5 @@
-![NotesApi Logo](https://i.ibb.co/hHsb7Dk/img-244368.png)
 <p align="center">
-      <img src="https://ibb.co/HY76Fn0" width="726">
+      <img src="https://i.ibb.co/hHsb7Dk/img-244368.png" width="726">
 </p>
 
 <p align="center">
@@ -245,26 +244,26 @@ Notes.Frontend
 
 #### Main Page
 <p align="center">
-  <img src="![Main Page](https://i.ibb.co/sqB2BVr/MainStr.png)"/>
+  <img src="https://i.ibb.co/sqB2BVr/MainStr.png">
 </p>
 
 #### Login Page
 <p align="center">
-  <img src="![Login Page](https://i.ibb.co/XY8pLBc/Login.png)"/>
+  <img src="https://i.ibb.co/XY8pLBc/Login.png" >
 </p>
 
 #### Sign Up Page
 <p align="center">
-  <img src="![Sign Up Page](https://i.ibb.co/GJQHq38/Signup.png)"/>
+  <img src="https://i.ibb.co/GJQHq38/Signup.png" >
 </p>
 
 #### Success Token
 <p align="center">
-  <img src="![Success Token](https://i.ibb.co/zJjZG2L/Succes-Token.png)"/>
+  <img src="https://i.ibb.co/zJjZG2L/Succes-Token.png" >
 </p>
 
 #### Success Note
 <p align="center">
-  <img src="![Success Note](https://i.ibb.co/Fw8ftHq/Succes-Note.png)"/>
+  <img src="https://i.ibb.co/Fw8ftHq/Succes-Note.png" >
 </p>
 
