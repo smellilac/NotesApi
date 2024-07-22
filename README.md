@@ -6,6 +6,7 @@
    <img src="https://img.shields.io/badge/.Net%20Core-8.0.200-green" alt=".Net Core Version">
    <img src="https://img.shields.io/badge/Duende.IdentityServer-7.0.5-blueviolet" alt="Duende Identity Server Version">
    <img src="https://img.shields.io/badge/EntityFrameworkCore-8.0.6-firebrick" alt="Entity Framework Core Version">
+   <img src="https://img.shields.io/badge/License-MIT-lime" alt="MIT License">
 </p>
 
 ## About
